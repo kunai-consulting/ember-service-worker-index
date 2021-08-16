@@ -3,6 +3,15 @@ jobs:
   git-sync:
     runs-on: ubuntu-latest
     steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "git@github.com:kunai-consulting/ember-service-worker-index.git"
+          source_branch: "refs/heads/*"
+          destination_repo: "git@github.com:AEG-Presents/ember-service-worker-index.git"
+          destination_branch: "refs/heads/*"
+          source_ssh_private_key: ${{ secrets.KUNAI_EMBER_SERVICE_WORKER_INDEX }}
+          destination_ssh_private_key: ${{ secrets.AEG_EMBER_SERVICE_WORKER_INDEX }}
       - name: git-sync-tags
         uses: wei/git-sync@v3
         with:
